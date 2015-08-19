@@ -3,20 +3,15 @@
 
 //1. Create a webserver
 var http = require("http");
+var router = require('./router.js');
+
 
 http.createServer(function(request, response) {
-    response.writeHead(200, {'Content-Type': 'text/plain'});
-    
-    setInterval(function(){
-        response.write(new Date() +'\n');
-    }, 1000);
-    
-    // response.end("hello World !!");
+   router.home(request, response);
+   router.user(request, response);
 }).listen(process.env.PORT, process.env.IP);
+
 console.log('server running at http://<werkspace-url>/'+process.env.IP);
 
-//2. Handle HTTP route GET/ and POST
-//3. Handle http route get/:username i.e. /chalkers
-//4. Functio that handles the reading of file and merge in value
 
 
