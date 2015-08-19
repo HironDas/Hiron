@@ -6,7 +6,7 @@ function mergeValues(values, content) {
 }
 
 
-function view( templateName, value, response) {
+function view( templateName, values, response) {
     //Read from the template file
     var fileContents = fs.readFileSync('./views/'+templateName +".html");
     
