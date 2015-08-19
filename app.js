@@ -9,7 +9,7 @@ var router = require('./router.js');
 http.createServer(function(request, response) {
    router.home(request, response);
    router.user(request, response);
-}).listen(process.env.PORT, process.env.IP);
+}).listen(process.env.PORT || 1337, process.env.IP || '127.0.0.1' );
 
 console.log('server running at http://<werkspace-url>/'+process.env.IP);
 
