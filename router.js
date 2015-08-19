@@ -2,11 +2,11 @@ var Profile = require('./profile.js');
 var renderer = require('./renderer.js')
 
 //2. Handle HTTP route GET/ and POST
-
+var commonHeaders = {'Content-Type': "text/html"};
 function home(request, response) {
     
     if (request.url === "/"){
-        response.writeHead(200, {'Content-Type': 'text/plain'});
+        response.writeHead(200, commonHeaders);
         
         renderer.view("header", {}, response);
         //response.write('Header\n');
@@ -23,7 +23,7 @@ function home(request, response) {
 function user(request, response){
     var username = request.url.replace("/", "");
     if(username.length > 0){
-        response.writeHead(200, {'Content-Type': 'text/plain'});
+        response.writeHead(200, commonHeaders);
         // response.write('Header\n');
         renderer.view("header", {}, response);
         var studentProfile = new Profile(username);
@@ -42,7 +42,7 @@ function user(request, response){
              
              //simple response
              //response.write(value.username + " has " + value.badges + " badges\n");
-             renderer.view("profile",vlaue, response);
+             renderer.view("profile",value, response);
              
              //response.end("Footer\n");
              renderer.view("footer",{}, response);
